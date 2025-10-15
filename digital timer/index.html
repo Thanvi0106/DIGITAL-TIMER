@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">  <!------Main wrapper for the whole background (usually styled with gradient or color)-->
+        <div class="container"><!-- centered box for the clock--> 
+            <div class="clock">
+                <span id="hrs">00</span><!---Displays the hours value (starts as “00”).-->
+                <span>:</span><!----: is a separator-->
+                <span id="min">00</span>
+                <span>:</span>
+                <span id="sec">00</span>   <!------These spans will be updated dynamically by JavaScript every second.-->
+            </div>
+        </div>
+    </div>
+    <script>/*javascript code*/
+        let hrs=document.getElementById("hrs");
+        let min=document.getElementById("min");
+        let sec=document.getElementById("sec");
+        setInterval(()=>{    /*Runs the given function repeatedly every specific time interval.Here, the function inside will run every 1000 milliseconds (1 second)*/
+             let currentTime=new Date();
+             hrs.innerHTML=(currentTime.getHours()<10?"0":"") + currentTime.getHours();/* inline if-condition*/
+             min.innerHTML=(currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();/* if condition is for to get double digits like 01 02 like that*/
+             sec.innerHTML=(currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+        },1000)
+
+
+        /*currentTime.getHours() gives the current hour (0–23).
+
+(condition ? "0" : "") is a ternary operator (inline if-else).
+
+If the hour is less than 10, it adds a "0" before it — e.g. 09 instead of 9.
+
+Otherwise, it just shows the number.
+
+The + joins the strings together.
+
+Finally, .innerHTML updates the HTML text inside <span id="hrs">.*/
+       
+
+    </script>
+
+    
+    
+    
+</body>
+</html>
